@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  fhir-app:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+      - PORT=3000
+      - AWS_REGION=us-east-1
+      - DYNAMODB_TABLE_PREFIX=fhir-pediatric-local
+      - FHIR_BASE_URL=https://hapi.fhir.org/baseR4
+      - LOG_LEVEL=info
+      - CORS_ORIGIN=http://localhost:3000
+    volumes:
+      - ./logs:/app/logs
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/api/v1/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # Local DynamoDB for development
+  dynamodb-local:
+    command: "-jar DynamoDBLocal.jar -sharedDb -optimizeDbBeforeStartup -dbPath ./data"
+    image: "amazon/dynamodb-local:latest"
+    container_name: dynamodb-local
+    ports:
+      - "8000:8000"
+    volumes:
+      - dynamodb_data:/home/dynamodblocal/data
+    working_dir: /home/dynamodblocal
+    restart: unless-stopped
+
+volumes:
+  dynamodb_data:
