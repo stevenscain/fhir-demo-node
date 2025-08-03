@@ -243,12 +243,12 @@ graph TB
     DYNAMO --> CLOUDWATCH
     
     %% Styling
-    classDef internet fill:#e3f2fd
-    classDef security fill:#ffebee
-    classDef compute fill:#e8f5e8
-    classDef data fill:#fff3e0
-    classDef monitor fill:#f3e5f5
-    classDef deploy fill:#fce4ec
+    classDef internet fill:#1565C0,stroke:#0D47A1,stroke-width:2px,color:#FFFFFF
+    classDef security fill:#D32F2F,stroke:#B71C1C,stroke-width:2px,color:#FFFFFF
+    classDef compute fill:#388E3C,stroke:#1B5E20,stroke-width:2px,color:#FFFFFF
+    classDef data fill:#F57C00,stroke:#E65100,stroke-width:2px,color:#FFFFFF
+    classDef monitor fill:#7B1FA2,stroke:#4A148C,stroke-width:2px,color:#FFFFFF
+    classDef deploy fill:#455A64,stroke:#263238,stroke-width:2px,color:#FFFFFF
 
     class INTERNET,ROUTE53 internet
     class ALB,WAF,CERT,IAM,SECRETS security
@@ -408,13 +408,13 @@ graph TB
     ALB --> IGW
 
     %% Styling
-    classDef layer7 fill:#e1f5fe
-    classDef layer6 fill:#f3e5f5
-    classDef layer5 fill:#e8f5e8
-    classDef layer4 fill:#fff3e0
-    classDef layer3 fill:#fce4ec
-    classDef layer2 fill:#f1f8e9
-    classDef layer1 fill:#fff8e1
+    classDef layer7 fill:#0D47A1,stroke:#01579B,stroke-width:2px,color:#FFFFFF
+    classDef layer6 fill:#4A148C,stroke:#6A1B9A,stroke-width:2px,color:#FFFFFF
+    classDef layer5 fill:#1B5E20,stroke:#2E7D32,stroke-width:2px,color:#FFFFFF
+    classDef layer4 fill:#E65100,stroke:#F57C00,stroke-width:2px,color:#FFFFFF
+    classDef layer3 fill:#B71C1C,stroke:#C62828,stroke-width:2px,color:#FFFFFF
+    classDef layer2 fill:#1565C0,stroke:#1976D2,stroke-width:2px,color:#FFFFFF
+    classDef layer1 fill:#455A64,stroke:#546E7A,stroke-width:2px,color:#FFFFFF
 
     class UI,API_DOCS,HEALTH layer7
     class PATIENT,APPT,VITALS,CARE layer6
@@ -494,12 +494,12 @@ graph LR
     ALERTS --> INTEGRATION
 
     %% Styling
-    classDef source fill:#bbdefb
-    classDef processing fill:#c8e6c9
-    classDef resource fill:#ffccbc
-    classDef decision fill:#f8bbd9
-    classDef storage fill:#d1c4e9
-    classDef consumer fill:#dcedc8
+    classDef source fill:#1565C0,stroke:#0D47A1,stroke-width:2px,color:#FFFFFF
+    classDef processing fill:#2E7D32,stroke:#1B5E20,stroke-width:2px,color:#FFFFFF
+    classDef resource fill:#E65100,stroke:#D84315,stroke-width:2px,color:#FFFFFF
+    classDef decision fill:#7B1FA2,stroke:#4A148C,stroke-width:2px,color:#FFFFFF
+    classDef storage fill:#455A64,stroke:#263238,stroke-width:2px,color:#FFFFFF
+    classDef consumer fill:#1976D2,stroke:#1565C0,stroke-width:2px,color:#FFFFFF
 
     class CLINICIAN,DEVICES,EXTERNAL source
     class VALIDATE,TRANSFORM,ENRICH processing

@@ -116,13 +116,13 @@ graph TB
     ECR --> APPT_SVC
 
     %% Styling
-    classDef external fill:#ffecb3
-    classDef presentation fill:#e1f5fe
-    classDef security fill:#ffcdd2
-    classDef service fill:#c8e6c9
-    classDef logic fill:#f3e5f5
-    classDef data fill:#fff3e0
-    classDef infra fill:#e0f2f1
+    classDef external fill:#F57C00,stroke:#E65100,stroke-width:2px,color:#FFFFFF
+    classDef presentation fill:#1565C0,stroke:#0D47A1,stroke-width:2px,color:#FFFFFF
+    classDef security fill:#D32F2F,stroke:#B71C1C,stroke-width:2px,color:#FFFFFF
+    classDef service fill:#388E3C,stroke:#1B5E20,stroke-width:2px,color:#FFFFFF
+    classDef logic fill:#7B1FA2,stroke:#4A148C,stroke-width:2px,color:#FFFFFF
+    classDef data fill:#455A64,stroke:#263238,stroke-width:2px,color:#FFFFFF
+    classDef infra fill:#1976D2,stroke:#1565C0,stroke-width:2px,color:#FFFFFF
 
     class EHR,DEVICES,HAPI external
     class WEB,MOBILE,API_DOCS presentation
@@ -227,11 +227,11 @@ graph LR
     ALERTS --> ESCALATE
     
     %% Styling
-    classDef input fill:#e3f2fd
-    classDef reference fill:#f3e5f5
-    classDef engine fill:#e8f5e8
-    classDef output fill:#fff3e0
-    classDef action fill:#ffebee
+    classDef input fill:#1565C0,stroke:#0D47A1,stroke-width:2px,color:#FFFFFF
+    classDef reference fill:#7B1FA2,stroke:#4A148C,stroke-width:2px,color:#FFFFFF
+    classDef engine fill:#2E7D32,stroke:#1B5E20,stroke-width:2px,color:#FFFFFF
+    classDef output fill:#E65100,stroke:#D84315,stroke-width:2px,color:#FFFFFF
+    classDef action fill:#D32F2F,stroke:#B71C1C,stroke-width:2px,color:#FFFFFF
 
     class VITAL,AGE,COMPLEXITY input
     class PEDIATRIC_REF,CLINICAL_RULES,ALERT_THRESHOLDS reference
@@ -330,13 +330,13 @@ graph TB
     COMPLIANCE --> SYSTEM_CONFIG
 
     %% Styling
-    classDef threat fill:#ffcdd2
-    classDef network fill:#e8eaf6
-    classDef app fill:#e0f2f1
-    classDef auth fill:#fff3e0
-    classDef data fill:#f3e5f5
-    classDef monitor fill:#e1f5fe
-    classDef resource fill:#c8e6c9
+    classDef threat fill:#B71C1C,stroke:#D32F2F,stroke-width:3px,color:#FFFFFF
+    classDef network fill:#1565C0,stroke:#0D47A1,stroke-width:2px,color:#FFFFFF
+    classDef app fill:#2E7D32,stroke:#1B5E20,stroke-width:2px,color:#FFFFFF
+    classDef auth fill:#E65100,stroke:#D84315,stroke-width:2px,color:#FFFFFF
+    classDef data fill:#455A64,stroke:#263238,stroke-width:2px,color:#FFFFFF
+    classDef monitor fill:#7B1FA2,stroke:#4A148C,stroke-width:2px,color:#FFFFFF
+    classDef resource fill:#1976D2,stroke:#1565C0,stroke-width:2px,color:#FFFFFF
 
     class DDOS,INJECTION,XSS,UNAUTHORIZED threat
     class WAF,VPC,NACL,SG network
@@ -425,12 +425,12 @@ graph LR
     VALIDATION -.->|Success| DEV
 
     %% Styling
-    classDef dev fill:#e3f2fd
-    classDef ci fill:#e8f5e8
-    classDef artifact fill:#fff3e0
-    classDef deploy fill:#f3e5f5
-    classDef prod fill:#ffebee
-    classDef monitor fill:#e0f2f1
+    classDef dev fill:#1565C0,stroke:#0D47A1,stroke-width:2px,color:#FFFFFF
+    classDef ci fill:#2E7D32,stroke:#1B5E20,stroke-width:2px,color:#FFFFFF
+    classDef artifact fill:#E65100,stroke:#D84315,stroke-width:2px,color:#FFFFFF
+    classDef deploy fill:#7B1FA2,stroke:#4A148C,stroke-width:2px,color:#FFFFFF
+    classDef prod fill:#D32F2F,stroke:#B71C1C,stroke-width:2px,color:#FFFFFF
+    classDef monitor fill:#455A64,stroke:#263238,stroke-width:2px,color:#FFFFFF
 
     class DEV,GIT,PR dev
     class TRIGGER,BUILD,SECURITY,QUALITY ci
