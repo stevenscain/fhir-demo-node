@@ -195,27 +195,27 @@ graph TB
         end
         
         subgraph "Private Subnets (Multi-AZ)"
-            ECS[ECS Fargate Tasks<br/>FHIR API Containers]
-            LAMBDA[Lambda Functions<br/>Clinical Processing]
+            ECS["ECS Fargate Tasks<br/>FHIR API Containers"]
+            LAMBDA["Lambda Functions<br/>Clinical Processing"]
         end
     end
     
     subgraph "Data Layer"
-        DYNAMO[DynamoDB Tables<br/>- Patients<br/>- Observations<br/>- Appointments]
-        S3[S3 Buckets<br/>Clinical Documents]
-        RDS[RDS (Future)<br/>Relational Clinical Data]
+        DYNAMO["DynamoDB Tables<br/>- Patients<br/>- Observations<br/>- Appointments"]
+        S3["S3 Buckets<br/>Clinical Documents"]
+        RDS["RDS Future<br/>Relational Clinical Data"]
     end
     
     subgraph "Monitoring & Security"
-        CLOUDWATCH[CloudWatch<br/>Metrics & Logs]
-        SECRETS[Secrets Manager<br/>API Keys & Certificates]
-        IAM[IAM Roles<br/>Least Privilege Access]
+        CLOUDWATCH["CloudWatch<br/>Metrics & Logs"]
+        SECRETS["Secrets Manager<br/>API Keys & Certificates"]
+        IAM["IAM Roles<br/>Least Privilege Access"]
     end
     
     subgraph "Development & Deployment"
-        ECR[ECR Container Registry]
-        CODEBUILD[CodeBuild<br/>CI/CD Pipeline]
-        TERRAFORM[Terraform State<br/>Infrastructure as Code]
+        ECR["ECR Container Registry"]
+        CODEBUILD["CodeBuild<br/>CI/CD Pipeline"]
+        TERRAFORM["Terraform State<br/>Infrastructure as Code"]
     end
 
     %% Traffic Flow
@@ -442,9 +442,9 @@ graph LR
     end
     
     subgraph "FHIR Resources"
-        PATIENT_R[Patient Resource<br/>US Core Profile]
-        OBS_R[Observation Resource<br/>LOINC Codes]
-        APPT_R[Appointment Resource<br/>SNOMED Specialties]
+        PATIENT_R["Patient Resource<br/>US Core Profile"]
+        OBS_R["Observation Resource<br/>LOINC Codes"]
+        APPT_R["Appointment Resource<br/>SNOMED Specialties"]
     end
     
     subgraph "Clinical Decision Support"
