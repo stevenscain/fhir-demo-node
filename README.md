@@ -264,6 +264,68 @@ graph TB
 - **Monitoring**: CloudWatch with custom metrics and alarms
 - **Scaling**: Auto-scaling based on CPU and memory utilization
 
+### **Data Architecture Strategy**
+
+#### **Current: DynamoDB for Operational FHIR Data**
+The platform currently uses **DynamoDB** as the primary database, optimized for:
+- **Real-time FHIR operations**: Sub-millisecond response times for clinical workflows
+- **Flexible schema**: Perfect for FHIR's JSON-based resource structure
+- **High throughput**: Handles concurrent clinical users without performance degradation
+- **Global Secondary Indexes**: Efficient patient and observation queries
+
+#### **Future: Hybrid Architecture with RDS**
+The architecture includes **RDS (Amazon Relational Database Service)** for future enhancement:
+
+**Why RDS for Healthcare Analytics?**
+```sql
+-- Example: Complex pediatric care analytics requiring SQL
+SELECT p.patient_id, p.age, p.care_complexity,
+       COUNT(o.observation_id) as vital_count,
+       AVG(CASE WHEN o.code = '8867-4' THEN o.value END) as avg_heart_rate,
+       COUNT(a.appointment_id) as appointment_count
+FROM patients p 
+LEFT JOIN observations o ON p.patient_id = o.patient_id
+LEFT JOIN appointments a ON p.patient_id = a.patient_id
+WHERE p.care_complexity IN ('high', 'critical')
+  AND o.effective_date >= CURRENT_DATE - INTERVAL '90 days'
+GROUP BY p.patient_id, p.age, p.care_complexity
+HAVING COUNT(o.observation_id) > 10;
+```
+
+**Enterprise Healthcare Use Cases:**
+- **Clinical Quality Metrics**: Hospital scorecard calculations requiring complex joins
+- **Population Health Analytics**: Multi-dimensional patient cohort analysis
+- **Research Capabilities**: Longitudinal studies across thousands of patients
+- **Regulatory Reporting**: CMS quality measures and public health reporting
+- **Financial Analytics**: Cost-per-episode and value-based care calculations
+- **Clinical Decision Support**: Complex rule engines with multi-table dependencies
+
+**Hybrid Architecture Benefits:**
+```
+┌─────────────────────┐    ┌─────────────────────┐
+│   DynamoDB          │    │   RDS PostgreSQL    │
+│                     │    │                     │
+│ • FHIR Resources    │◄──►│ • Clinical Analytics│
+│ • Real-time Access  │    │ • Complex Reporting │
+│ • Flexible Schema   │    │ • Data Relationships│
+│ • High Performance  │    │ • SQL Capabilities  │
+└─────────────────────┘    └─────────────────────┘
+```
+
+**Industry Standard Pattern:**
+This hybrid approach reflects real-world enterprise healthcare architecture:
+- **Epic, Cerner, AllScripts**: Use both NoSQL and relational databases
+- **FHIR + SQL**: Common pattern in modern healthcare data platforms
+- **Data Lake Architecture**: Separates operational and analytical workloads
+- **Regulatory Compliance**: Often requires SQL for complex audit queries
+
+**Implementation Phases:**
+- **Phase 1 (Current)**: DynamoDB for operational FHIR data and real-time clinical workflows
+- **Phase 2 (Future)**: Add RDS for clinical data warehouse, advanced analytics, and research capabilities
+- **Phase 3 (Advanced)**: Data lake with automated ETL pipelines for population health insights
+
+This design demonstrates **enterprise healthcare architecture thinking** - recognizing that different data access patterns require different database technologies, which is essential for scalable pediatric care platforms like those needed at Imagine Pediatrics.
+
 ## 🔐 Security Features
 
 - **Input Validation**: Comprehensive request validation with Joi
